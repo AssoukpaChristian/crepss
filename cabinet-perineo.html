@@ -1,0 +1,2680 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cabinet Périnéo | Rééducation Périnéale à Abidjan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan: #70E1F5;
+      --navy: #1A237E;
+      --emerald: #00B050;
+      --mauve: #D9A7D7;
+      --white: #FFFFFF;
+      --cyan-pale: rgba(112, 225, 245, 0.12);
+      --cyan-soft: rgba(112, 225, 245, 0.25);
+      --mauve-pale: rgba(217, 167, 215, 0.12);
+      --navy-pale: rgba(26, 35, 126, 0.07);
+      --shadow: 0 4px 32px rgba(26, 35, 126, 0.10);
+      --shadow-sm: 0 2px 12px rgba(26, 35, 126, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      overflow-x: hidden
+    }
+
+    /* ===================== NAV ===================== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--cyan-pale);
+      padding: .9rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: box-shadow .3s;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 20px rgba(26, 35, 126, 0.08)
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      gap: 0
+    }
+
+    .nav-tagline {
+      font-size: .82rem;
+      color: var(--navy);
+      opacity: .85;
+      font-weight: 400;
+      margin-top: 0;
+      letter-spacing: .3px;
+      font-style: italic;
+      text-align: center
+    }
+
+    .nav-logo img {
+      height: 84px;
+      width: auto;
+      transition: all .3s ease
+    }
+
+    nav.scrolled .nav-logo img {
+      height: 52px
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--navy);
+      font-size: .88rem;
+      font-weight: 500;
+      letter-spacing: .3px;
+      transition: color .2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--cyan);
+      transition: width .25s;
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%
+    }
+
+    .nav-links a:hover {
+      color: var(--navy)
+    }
+
+    .nav-cta {
+      background: var(--emerald);
+      color: white;
+      border: none;
+      padding: .6rem 1.4rem;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: .85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      transition: all .25s;
+      box-shadow: 0 4px 14px rgba(0, 176, 80, 0.3);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 176, 80, 0.4)
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: all .3s
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: white;
+      border-bottom: 1px solid var(--cyan-pale);
+      flex-direction: column;
+      padding: 1.5rem 5%;
+      gap: 1.2rem;
+      z-index: 999;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .mobile-menu.open {
+      display: flex
+    }
+
+    .mobile-menu a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--navy-pale)
+    }
+
+    /* ===================== HERO ===================== */
+    #accueil {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8.5rem 5% 4rem;
+      background: #000;
+      /* Fallback background color */
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      z-index: 0;
+    }
+
+
+
+    .hero-bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: .6;
+      pointer-events: none;
+    }
+
+    .hero-bg-orb.o1 {
+      width: 500px;
+      height: 500px;
+      background: var(--cyan);
+      top: -100px;
+      right: -100px;
+      opacity: .2
+    }
+
+    .hero-bg-orb.o2 {
+      width: 350px;
+      height: 350px;
+      background: var(--mauve);
+      bottom: -50px;
+      left: -80px;
+      opacity: .18
+    }
+
+    .hero-bg-orb.o3 {
+      width: 250px;
+      height: 250px;
+      background: var(--cyan);
+      bottom: 10%;
+      right: 15%;
+      opacity: .12
+    }
+
+    .hero-inner {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .hero-text {
+      flex: 1;
+      max-width: 650px;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--cyan-pale);
+      border: 1px solid var(--cyan-soft);
+      border-radius: 999px;
+      padding: .35rem 1rem;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--navy);
+      letter-spacing: .3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      display: inline-block;
+      animation: pulse 2s infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+
+      50% {
+        transform: scale(1.3);
+        opacity: .7
+      }
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #B284CB;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0.4rem 1.2rem;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--cyan);
+      position: relative;
+      display: inline-block
+    }
+
+    .hero-title em::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+      border-radius: 2px;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #ffffff;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      max-width: 580px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem
+    }
+
+    .hero-actions .btn-outline {
+      color: white;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .hero-actions .btn-outline:hover {
+      background: white;
+      color: var(--navy);
+      border-color: white;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--emerald);
+      color: white;
+      text-decoration: none;
+      padding: .8rem 1.8rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .95rem;
+      font-family: 'Jost', sans-serif;
+      transition: all .25s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 176, 80, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 176, 80, 0.45)
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: transparent;
+      color: var(--navy);
+      text-decoration: none;
+      padding: .8rem 1.8rem;
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: .95rem;
+      font-family: 'Jost', sans-serif;
+      transition: all .25s;
+      cursor: pointer;
+      border: 2px solid var(--navy);
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: white
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .9rem;
+      color: #ffffff;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0.4rem 1rem;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .trust-item .ico {
+      font-size: 1rem
+    }
+
+    .hero-visual {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 420px;
+    }
+
+    .hero-card-float {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.2rem 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      position: absolute;
+    }
+
+    .hero-card-float.c1 {
+      top: 15%;
+      right: 10%;
+      animation: float 4s ease-in-out infinite
+    }
+
+    .hero-card-float.c2 {
+      bottom: 8%;
+      right: 5%;
+      animation: float 4s ease-in-out infinite .5s
+    }
+
+    .hero-card-float .ico-lg {
+      font-size: 1.6rem
+    }
+
+    .hero-card-float div {
+      line-height: 1.3
+    }
+
+    .hero-card-float strong {
+      font-size: .85rem;
+      display: block;
+      color: var(--navy)
+    }
+
+    .hero-card-float span {
+      font-size: .75rem;
+      color: #6b7ab5
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-8px)
+      }
+    }
+
+    .hero-illustration {
+      width: 100%;
+      max-width: 420px
+    }
+
+    /* ===================== SENSIBILISATION ===================== */
+    #sensibilisation {
+      padding: 5rem 5%;
+      background: var(--white);
+      position: relative;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--emerald);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: #5565a8;
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 600px
+    }
+
+    .centered {
+      text-align: center;
+      margin: 0 auto
+    }
+
+    .symptom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .symptom-card {
+      background: linear-gradient(135deg, var(--cyan-pale) 0%, white 100%);
+      border: 1px solid var(--cyan-soft);
+      border-radius: 1.25rem;
+      padding: 1.8rem 1.5rem;
+      transition: all .3s;
+      cursor: default;
+    }
+
+    .symptom-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: var(--cyan)
+    }
+
+    .symptom-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block
+    }
+
+    .symptom-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .5rem
+    }
+
+    .symptom-card p {
+      font-size: .88rem;
+      color: #5565a8;
+      line-height: 1.6
+    }
+
+    .sensib-bottom {
+      margin-top: 3.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--navy) 0%, #2d3ab5 100%);
+      border-radius: 2rem;
+      padding: 3rem 2rem;
+      color: white;
+    }
+
+    .sensib-bottom h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 1rem
+    }
+
+    .sensib-bottom p {
+      font-size: .95rem;
+      opacity: .8;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    /* ===================== A PROPOS ===================== */
+    #apropos {
+      padding: 5rem 5%;
+      background: linear-gradient(150deg, #f5fcff 0%, #fef0fe 100%);
+    }
+
+    .apropos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto
+    }
+
+    .apropos-visual {
+      position: relative
+    }
+
+    .apropos-img-frame {
+      background: white;
+      border-radius: 2rem;
+      overflow: hidden;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border: 2px solid var(--cyan-soft);
+    }
+
+    .apropos-icon-main {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 1rem
+    }
+
+    .stat-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      justify-content: center;
+      margin-top: 1.5rem
+    }
+
+    .stat-pill {
+      background: var(--cyan-pale);
+      border: 1px solid var(--cyan-soft);
+      border-radius: 999px;
+      padding: .4rem 1rem;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .stat-pill em {
+      color: var(--emerald);
+      font-style: normal
+    }
+
+    .apropos-badge-float {
+      position: absolute;
+      background: white;
+      border-radius: 1rem;
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--emerald);
+      bottom: -3rem;
+      right: -1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .apropos-badge-float .ico {
+      font-size: 1.4rem
+    }
+
+    .apropos-badge-float div strong {
+      font-size: .85rem;
+      display: block;
+      color: var(--navy)
+    }
+
+    .apropos-badge-float div span {
+      font-size: .75rem;
+      color: #6b7ab5
+    }
+
+    .apropos-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.2rem
+    }
+
+    .apropos-content p {
+      font-size: .95rem;
+      color: #5565a8;
+      line-height: 1.8;
+      margin-bottom: 1rem
+    }
+
+    .values-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem
+    }
+
+    .values-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      font-size: .92rem;
+      color: #3d4a8a;
+      line-height: 1.5
+    }
+
+    .values-list li .v-ico {
+      min-width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--cyan-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      margin-top: 1px;
+    }
+
+    /* ===================== NOS SOINS ===================== */
+    #soins {
+      padding: 5rem 5%;
+      background: var(--white)
+    }
+
+    .soins-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+      margin-top: 3rem;
+    }
+
+    .soin-card {
+      background: white;
+      border: 2px solid var(--cyan-soft);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      overflow: hidden;
+      position: relative;
+      transition: all .35s;
+      cursor: default;
+    }
+
+    .soin-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan), var(--mauve));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s;
+    }
+
+    .soin-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: var(--cyan)
+    }
+
+    .soin-card:hover::before {
+      transform: scaleX(1)
+    }
+
+    .soin-emoji,
+    .soin-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .soin-emoji {
+      font-size: 2.5rem;
+      height: auto;
+    }
+
+    .soin-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .5rem
+    }
+
+    .soin-tag {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--emerald);
+      margin-bottom: .8rem
+    }
+
+    .soin-card p {
+      font-size: .88rem;
+      color: #5565a8;
+      line-height: 1.6;
+      margin-bottom: 1.2rem
+    }
+
+    .soin-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem
+    }
+
+    .soin-list li {
+      font-size: .82rem;
+      color: #3d4a8a;
+      display: flex;
+      align-items: center;
+      gap: .4rem
+    }
+
+    .soin-list li::before {
+      content: '✦';
+      color: var(--cyan);
+      font-size: .7rem
+    }
+
+    /* ===================== APPROCHE ===================== */
+    #approche {
+      padding: 5rem 5%;
+      background: linear-gradient(135deg, var(--navy) 0%, #1e2d9e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #approche::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(112, 225, 245, 0.08);
+      right: -150px;
+      top: -150px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      position: relative;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--mauve), var(--cyan));
+      opacity: .4;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative
+    }
+
+    .step-num {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), #9eeaf5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 0 8px rgba(112, 225, 245, 0.15);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: .6rem
+    }
+
+    .step p {
+      font-size: .88rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.6
+    }
+
+    .approche-cta {
+      text-align: center;
+      margin-top: 3.5rem
+    }
+
+    .approche-cta p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: .9rem;
+      margin-top: 1rem
+    }
+
+    /* ===================== AUTO-DIAGNOSTIC ===================== */
+    #diagnostic {
+      padding: 5rem 5%;
+      background: linear-gradient(135deg, #f0f9ff 0%, #fef0fe 100%);
+    }
+
+    .diag-wrapper {
+      max-width: 680px;
+      margin: 3rem auto 0;
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--cyan-soft);
+    }
+
+    .diag-header {
+      text-align: center;
+      margin-bottom: 2rem
+    }
+
+    .diag-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .5rem
+    }
+
+    .diag-header p {
+      font-size: .88rem;
+      color: #6b7ab5
+    }
+
+    .diag-question {
+      margin-bottom: 1.8rem;
+      display: none;
+      animation: fadeIn .4s ease;
+    }
+
+    .diag-question.active {
+      display: block
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .diag-q-text {
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      font-size: .95rem
+    }
+
+    .diag-options {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem
+    }
+
+    .diag-opt {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      padding: .85rem 1.2rem;
+      border: 2px solid var(--cyan-soft);
+      border-radius: .75rem;
+      cursor: pointer;
+      transition: all .2s;
+      font-size: .9rem;
+      color: var(--navy);
+      background: white;
+      text-align: left;
+      font-family: 'Jost', sans-serif;
+      width: 100%;
+    }
+
+    .diag-opt:hover {
+      border-color: var(--cyan);
+      background: var(--cyan-pale)
+    }
+
+    .diag-opt.selected {
+      border-color: var(--navy);
+      background: var(--navy-pale)
+    }
+
+    .diag-progress {
+      display: flex;
+      gap: .4rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .diag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan-soft);
+      transition: all .3s;
+    }
+
+    .diag-dot.done {
+      background: var(--emerald)
+    }
+
+    .diag-dot.active {
+      background: var(--navy);
+      width: 22px;
+      border-radius: 5px
+    }
+
+    .diag-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      align-items: center
+    }
+
+    .btn-next {
+      background: var(--navy);
+      color: white;
+      border: none;
+      padding: .65rem 1.8rem;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-next:hover {
+      background: #2d3ab5
+    }
+
+    .btn-prev {
+      background: none;
+      color: #6b7ab5;
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: .88rem;
+      cursor: pointer;
+      padding: .5rem;
+    }
+
+    .diag-result {
+      display: none;
+      text-align: center;
+      padding: 1rem
+    }
+
+    .diag-result.show {
+      display: block
+    }
+
+    .result-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: block
+    }
+
+    .result-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .8rem
+    }
+
+    .result-text {
+      font-size: .92rem;
+      color: #5565a8;
+      line-height: 1.7;
+      margin-bottom: 1.8rem
+    }
+
+    .diag-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: .78rem;
+      color: #9aa4cc
+    }
+
+    .diag-note strong {
+      color: var(--navy)
+    }
+
+    /* ===================== TEMOIGNAGES ===================== */
+    #temoignages {
+      padding: 5rem 5%;
+      background: var(--white)
+    }
+
+    .temoignages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.8rem;
+      margin-top: 3rem;
+    }
+
+    .temoignage-card {
+      background: linear-gradient(135deg, var(--cyan-pale) 0%, var(--mauve-pale) 100%);
+      border: 1px solid var(--cyan-soft);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      position: relative;
+      transition: all .3s;
+    }
+
+    .temoignage-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow)
+    }
+
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: var(--cyan);
+      line-height: 0;
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      opacity: .4;
+    }
+
+    .stars {
+      color: #f5a623;
+      font-size: 1rem;
+      margin-bottom: .8rem;
+      letter-spacing: 2px
+    }
+
+    .temoignage-card blockquote {
+      font-size: .93rem;
+      color: #3d4a8a;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+    }
+
+    .temoignage-author {
+      display: flex;
+      align-items: center;
+      gap: .7rem
+    }
+
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--mauve));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .author-info strong {
+      font-size: .85rem;
+      display: block;
+      color: var(--navy)
+    }
+
+    .author-info span {
+      font-size: .78rem;
+      color: #6b7ab5
+    }
+
+    /* ===================== FAQ ===================== */
+    #faq {
+      padding: 5rem 5%;
+      background: linear-gradient(150deg, #f5fcff 0%, #f9f5ff 100%);
+    }
+
+    .faq-list {
+      max-width: 750px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--cyan-soft);
+    }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: .93rem;
+      color: var(--navy);
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Jost', sans-serif;
+      transition: background .2s;
+    }
+
+    .faq-q:hover {
+      background: var(--cyan-pale)
+    }
+
+    .faq-chevron {
+      font-size: 1.1rem;
+      transition: transform .3s;
+      color: var(--cyan);
+      font-style: normal;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+
+    .faq-a-inner {
+      padding: 0 1.5rem 1.2rem;
+      font-size: .88rem;
+      color: #5565a8;
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg)
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px
+    }
+
+    /* ===================== CONTACT ===================== */
+    #contact {
+      padding: 5rem 5%;
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4rem;
+      width: 100%;
+      margin: 3rem auto 0;
+      align-items: start;
+    }
+
+    .contact-info,
+    .contact-form,
+    .map-section {
+      flex: 1;
+      min-width: 320px;
+    }
+
+    .contact-info h3,
+    .contact-form h3,
+    .map-section h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1rem
+    }
+
+    .contact-info p,
+    .contact-form p {
+      font-size: .92rem;
+      color: #5565a8;
+      line-height: 1.7;
+      margin-bottom: 1.5rem
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      font-size: .9rem;
+      color: var(--navy)
+    }
+
+    .contact-ico {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--cyan-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      border: 1px solid var(--cyan-soft);
+      min-width: 40px;
+    }
+
+    .btn-whatsapp-big {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: 'Jost', sans-serif;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+      transition: all .25s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-whatsapp-big:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(37, 211, 102, 0.45)
+    }
+
+    .contact-form {
+      padding: 0;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem
+    }
+
+    .form-group label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .4rem;
+      letter-spacing: .3px
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: .75rem 1rem;
+      border: 2px solid var(--cyan-soft);
+      border-radius: .75rem;
+      font-family: 'Jost', sans-serif;
+      font-size: .9rem;
+      color: var(--navy);
+      background: white;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--cyan)
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--navy);
+      color: white;
+      border: none;
+      padding: .85rem;
+      border-radius: .75rem;
+      font-family: 'Jost', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .btn-submit:hover {
+      background: #2d3ab5
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: var(--navy);
+      background-image: radial-gradient(circle at top right, rgba(142, 161, 225, 0.1), transparent 500px);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 5rem 5% 2rem;
+      position: relative;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+    }
+
+    .footer-brand .footer-logo {
+      height: 70px;
+      width: auto;
+      margin-bottom: 1.5rem;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-tagline {
+      color: var(--cyan);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-desc {
+      font-size: .95rem;
+      line-height: 1.8;
+      max-width: 450px;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-family: 'Jost', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--cyan);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2rem;
+    }
+
+    .footer-links li a {
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      font-size: .95rem;
+      display: flex;
+      align-items: center;
+      transition: all .3s ease;
+    }
+
+    .link-arrow {
+      color: var(--cyan);
+      margin-right: 8px;
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: all .3s ease;
+    }
+
+    .footer-links li a:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .footer-links li a:hover .link-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .85rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .footer-bottom a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .footer-bottom a:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .footer-links {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    /* ===================== WHATSAPP FLOAT ===================== */
+    .wa-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 998;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      transition: all .25s;
+      animation: waPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes waPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 24px rgba(37, 211, 102, 0.45)
+      }
+
+      50% {
+        box-shadow: 0 4px 40px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.1)
+      }
+    }
+
+    .wa-float:hover {
+      transform: scale(1.1)
+    }
+
+    .wa-float svg {
+      width: 28px;
+      height: 28px;
+      fill: white
+    }
+
+    .wa-label {
+      position: absolute;
+      right: 68px;
+      background: var(--navy);
+      color: white;
+      border-radius: 8px;
+      padding: .4rem .9rem;
+      font-size: .78rem;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .2s;
+      pointer-events: none;
+    }
+
+    .wa-label::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right: none;
+      border-left-color: var(--navy);
+    }
+
+    .wa-float:hover .wa-label {
+      opacity: 1
+    }
+
+    /* ===================== SCROLL ANIMATIONS ===================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .15s
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .3s
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .45s
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media(max-width:900px) {
+      .nav-logo img {
+        height: 64px !important;
+      }
+
+      #accueil {
+        background-attachment: scroll;
+        min-height: auto;
+        display: block;
+        padding: 4rem 5% 3rem;
+        background-color: var(--white);
+        position: relative;
+      }
+
+      .hero-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 85vw;
+        /* Increased height */
+        object-fit: cover;
+        object-position: center 100px;
+        z-index: 0;
+      }
+
+
+
+      .hero-inner {
+        padding-top: 75vw;
+        /* Espace suffisant pour ne pas chevaucher l'image */
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: center;
+        gap: 1.8rem;
+        width: 100%;
+      }
+
+      .hero-text {
+        background: none;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+      }
+
+      .hero-title {
+        color: #B284CB !important;
+        font-size: 2.4rem;
+        line-height: 1.2;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 0.3rem 0.8rem;
+        border-radius: 0.6rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .hero-title em {
+        color: var(--cyan) !important;
+      }
+
+      .hero-sub {
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+        color: #5565a8 !important;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1rem;
+      }
+
+      .hero-actions,
+      .hero-trust {
+        justify-content: center;
+        color: #B384CA;
+        font-weight: 500;
+      }
+
+      .hero-actions .btn-outline {
+        color: white;
+        border-color: var(--navy);
+      }
+
+      .hero-actions .btn-outline:hover {
+        background: var(--navy);
+        color: white;
+      }
+
+      .hero-visual {
+        display: none
+      }
+
+      .apropos-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem
+      }
+
+      .apropos-visual {
+        display: none
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem
+      }
+
+      .steps-grid::before {
+        display: none
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .hamburger {
+        display: flex
+      }
+
+      .logo-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .nav-logo img {
+        height: 52px
+      }
+    }
+
+    @media(max-width:480px) {
+      .hero-title {
+        font-size: 2.1rem
+      }
+
+      .hero-actions .btn-primary,
+      .hero-actions .btn-outline {
+        width: 100%;
+        justify-content: center
+      }
+    }
+
+    @media(max-width:560px) {
+      .logo-grid {
+        grid-template-columns: 1fr
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center
+      }
+
+      .hero-actions {
+        flex-direction: column
+      }
+
+      .btn-primary,
+      .btn-outline {
+        text-align: center;
+        justify-content: center
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar">
+    <a href="#accueil" class="nav-logo" id="nav-logo-link">
+      <!-- Logo dynamically set by JS -->
+      <img id="active-logo" src="images/logo_BR.png" alt="Cabinet Périnéo">
+      <span class="nav-tagline">Harmonie intérieure, bien-être assuré</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#soins">Nos Soins</a></li>
+      <li><a href="#approche">Notre Approche</a></li>
+      <li><a href="#temoignages">Témoignages</a></li>
+      <li><a href="#diagnostic">Auto-Diagnostic</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/2250717444444" class="nav-cta" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+      Prendre RDV
+    </a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#soins" onclick="toggleMenu()">Nos Soins</a>
+    <a href="#approche" onclick="toggleMenu()">Notre Approche</a>
+    <a href="#temoignages" onclick="toggleMenu()">Témoignages</a>
+    <a href="#diagnostic" onclick="toggleMenu()">Auto-Diagnostic</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="https://wa.me/2250717444444" target="_blank" style="color:#00B050;font-weight:700">📱 Prendre RDV sur
+      WhatsApp</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="accueil">
+    <video class="hero-video" autoplay muted loop playsinline poster="images/Couple_walking_cpd.jpeg">
+      <source src="videos/in_the_garden.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-inner">
+      <div class="hero-text">
+        <!-- <div class="hero-badge">
+          <span></span>
+          Cabinet spécialisé à Abidjan
+        </div> -->
+        <h1 class="hero-title reveal">
+          Retrouvez votre équilibre,<br>
+          <em>en toute discrétion.</em>
+        </h1>
+        <p class="hero-sub reveal reveal-delay-1">
+          Spécialiste de la rééducation périnéale à Abidjan.
+          Un espace de soin bienveillant, confidentiel et professionnel —
+          pour les femmes en post-partum, les sportives, et toute personne souhaitant
+          retrouver confort et qualité de vie.
+        </p>
+        <div class="hero-actions reveal reveal-delay-2">
+          <a href="https://wa.me/2250757131853" class="btn-primary" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Prendre RDV sur WhatsApp
+          </a>
+          <a href="#diagnostic" class="btn-outline">
+            🔍 Mon auto-diagnostic
+          </a>
+        </div>
+        <div class="hero-trust reveal reveal-delay-3">
+          <div class="trust-item"><span class="ico">🔒</span> Consultation discrète</div>
+          <div class="trust-item"><span class="ico">⭐</span> Suivi personnalisé</div>
+          <div class="trust-item"><span class="ico">📍</span> Abidjan</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-float c1">
+          <span class="ico-lg">🌸</span>
+          <div>
+            <strong>Post-partum</strong>
+            <span>Récupération complète</span>
+          </div>
+        </div>
+
+        <div class="hero-card-float c2">
+          <span class="ico-lg">💚</span>
+          <div>
+            <strong>Suivi personnalisé</strong>
+            <span>Programme adapté</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SENSIBILISATION ===== -->
+  <section id="sensibilisation">
+    <div class="centered reveal">
+      <span class="section-tag">Sensibilisation</span>
+      <h2 class="section-title">Ces troubles que vous n'osez<br>pas encore nommer</h2>
+      <p class="section-sub">Beaucoup de femmes (et d'hommes) vivent ces situations au quotidien, souvent dans le
+        silence. Pourtant, des solutions existent.</p>
+    </div>
+    <div class="symptom-grid">
+      <div class="symptom-card reveal">
+        <span class="symptom-icon">💧</span>
+        <h3>Fuites urinaires</h3>
+        <p>Lors d'un effort, d'un éternuement ou d'une course — ce n'est pas une fatalité, c'est traitable.</p>
+      </div>
+      <div class="symptom-card reveal reveal-delay-1">
+        <span class="symptom-icon">🤱</span>
+        <h3>Après l'accouchement</h3>
+        <p>Douleurs, cicatrices, sensation de lourdeur — votre corps a besoin d'accompagnement.</p>
+      </div>
+      <div class="symptom-card reveal reveal-delay-2">
+        <span class="symptom-icon">🌸</span>
+        <h3>Douleurs intimes</h3>
+        <p>Inconfort lors des rapports ou des examens gynécologiques — une rééducation adaptée peut tout changer.</p>
+      </div>
+      <div class="symptom-card reveal reveal-delay-3">
+        <span class="symptom-icon">🏃‍♀️</span>
+        <h3>Impact du sport</h3>
+        <p>Descente d'organes, périnée sollicité par l'effort — protégez-vous avant qu'il ne soit trop tard.</p>
+      </div>
+    </div>
+    <div class="sensib-bottom reveal">
+      <h3>« Le périnée n'est pas réservé aux jeunes mamans. »</h3>
+      <p>Femmes ménopausées, sportives, femmes actives et même hommes — la santé périnéale concerne tout le monde.
+        L'ignorer, c'est accepter de vivre avec un handicap invisible.</p>
+      <a href="#diagnostic" class="btn-outline" style="border-color:rgba(255,255,255,0.4);color:white">
+        ✦ Faire mon auto-diagnostic gratuit
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== A PROPOS ===== -->
+  <section id="apropos">
+    <div class="apropos-grid">
+      <div class="apropos-visual reveal">
+        <div class="apropos-img-frame">
+          <span class="apropos-icon-main">🏥</span>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--navy);margin-bottom:.5rem">
+            Cabinet Périnéo</h3>
+          <p style="font-size:.85rem;color:#6b7ab5;line-height:1.6">Un espace de soin discret,<br>chaleureux et
+            professionnel</p>
+          <div class="stat-pills" style="margin-top:1.5rem">
+            <div class="stat-pill"><em>100%</em> Confidentiel</div>
+            <div class="stat-pill"><em>★</em> Approche personnalisée</div>
+            <div class="stat-pill"><em>📱</em> RDV WhatsApp</div>
+            <div class="stat-pill"><em>🌍</em> Abidjan, CI</div>
+          </div>
+        </div>
+        <div class="apropos-badge-float">
+          <span class="ico">💚</span>
+          <div>
+            <strong>Prise en charge globale</strong>
+            <span>Corps & bien-être</span>
+          </div>
+        </div>
+      </div>
+      <div class="apropos-content">
+        <span class="section-tag">À propos</span>
+        <h2 class="reveal">Un espace de confiance,<br><em
+            style="font-family:'Cormorant Garamond',serif;font-style:italic">à votre écoute</em></h2>
+        <p class="reveal reveal-delay-1" style="margin-top:1rem">
+          À Abidjan, la rééducation périnéale reste un sujet entouré de tabous.
+          Notre cabinet est né d'une conviction : chaque personne mérite des soins
+          de qualité, dans un cadre discret, bienveillant et professionnel.
+        </p>
+        <p class="reveal reveal-delay-1">
+          Nous accompagnons femmes en post-partum, sportives, femmes ménopausées,
+          et hommes avec des programmes de soin entièrement personnalisés,
+          basés sur une évaluation rigoureuse de chaque situation.
+        </p>
+        <ul class="values-list reveal reveal-delay-2">
+          <li>
+            <span class="v-ico">🎯</span>
+            <span><strong>Expertise spécialisée</strong> — Rééducation périnéo-sphinctérienne et sexologie</span>
+          </li>
+          <li>
+            <span class="v-ico">🔐</span>
+            <span><strong>Confidentialité absolue</strong> — Chaque consultation est strictement confidentielle</span>
+          </li>
+          <li>
+            <span class="v-ico">💬</span>
+            <span><strong>Pédagogie bienveillante</strong> — Nous expliquons le pourquoi avant le comment</span>
+          </li>
+          <li>
+            <span class="v-ico">📱</span>
+            <span><strong>Accès simplifié</strong> — Prise de RDV directe sur WhatsApp, sans attente</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOS SOINS ===== -->
+  <section id="soins">
+    <div class="centered reveal">
+      <span class="section-tag">Nos Soins</span>
+      <h2 class="section-title">Un programme pour chaque besoin</h2>
+      <p class="section-sub">Que vous soyez jeune maman, sportive, en période de ménopause ou homme, nous avons un
+        protocole adapté à votre situation.</p>
+    </div>
+    <div class="soins-grid">
+
+      <!-- ===== postpartum ===== -->
+      <div class="soin-card reveal">
+        <img src="images/post_partum_cpd.png" alt="Post-partum" class="soin-card-img">
+        <span class="soin-tag">Post-partum</span>
+        <h3>Rééducation après accouchement</h3>
+        <p>Récupérez votre tonicité, cicatrisez vos tissus, et retrouvez votre corps sereinement après la naissance.</p>
+        <ul class="soin-list">
+          <li>Rééducation du périnée</li>
+          <li>Traitement des cicatrices</li>
+          <li>Abdominaux hypopressifs</li>
+          <li>Suivi personnalisé</li>
+        </ul>
+      </div>
+
+      <!-- ===== femme active ===== -->
+      <div class="soin-card reveal reveal-delay-1">
+        <img src="images/femme_sportive_cpd.png" alt="Femme Active" class="soin-card-img">
+        <span class="soin-tag">Femme Active & Sportive</span>
+        <h3>Prévention & Performance</h3>
+        <p>Protégez votre périnée des impacts liés au sport intensif et prévenez les troubles à long terme.</p>
+        <ul class="soin-list">
+          <li>Bilan périnéal du sportif</li>
+          <li>Prévention des fuites</li>
+          <li>Gainage fonctionnel</li>
+          <li>Reprise sportive guidée</li>
+        </ul>
+      </div>
+
+
+      <!-- ===== femme menopausee ===== -->
+      <div class="soin-card reveal reveal-delay-2">
+        <img src="images/femme_menopausee_cpd.png" alt="Femme Ménopausée" class="soin-card-img">
+        <span class="soin-tag">Femme Ménopausée</span>
+        <h3>Confort & Sérénité</h3>
+        <p>Gérez les changements hormonaux et retrouvez confort intime et qualité de vie au quotidien.</p>
+        <ul class="soin-list">
+          <li>Sécheresse & atrophie vaginale</li>
+          <li>Rééducation de la continence</li>
+          <li>Prolapsus & ptose</li>
+          <li>Accompagnement sexologique</li>
+        </ul>
+      </div>
+
+      <!-- ===== homme ===== -->
+      <div class="soin-card reveal reveal-delay-3">
+        <img src="images/exercice_kegel_cpd.png" alt="Homme" class="soin-card-img">
+        <span class="soin-tag">Homme</span>
+        <h3>Santé Masculine & Continence</h3>
+        <p>Troubles de la continence, rééducation post-prostatectomie, dysfonctions — des solutions existent.</p>
+        <ul class="soin-list">
+          <li>Incontinence urinaire</li>
+          <li>Post-opératoire prostate</li>
+          <li>Dysfonction érectile</li>
+          <li>Plancher pelvien masculin</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== APPROCHE ===== -->
+  <section id="approche">
+    <div class="centered reveal">
+      <span class="section-tag" style="color:var(--cyan)">Notre Approche</span>
+      <h2 class="section-title" style="color:white">Votre parcours en 3 étapes simples</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6)">Un processus clair, discret et bienveillant du premier
+        contact à votre guérison.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">📱</div>
+        <h3>Prise de contact</h3>
+        <p>Un message WhatsApp suffit. En quelques secondes, posez votre question ou demandez votre premier rendez-vous
+          — discrètement.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">🔍</div>
+        <h3>Bilan personnalisé</h3>
+        <p>Lors de la première séance, nous évaluons votre situation sans jugement pour comprendre précisément vos
+          besoins.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">✅</div>
+        <h3>Programme sur mesure</h3>
+        <p>Un protocole adapté, suivi et ajusté à chaque étape de votre progression — jusqu'à l'objectif fixé ensemble.
+        </p>
+      </div>
+    </div>
+    <div class="approche-cta reveal">
+      <a href="https://wa.me/2250717444444" class="btn-primary" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        Commencer maintenant
+      </a>
+      <p>Réponse WhatsApp garantie dans les 2h ⚡</p>
+    </div>
+  </section>
+
+  <!-- ===== AUTO-DIAGNOSTIC ===== -->
+  <section id="diagnostic">
+    <div class="centered reveal">
+      <span class="section-tag">Auto-Diagnostic</span>
+      <h2 class="section-title">Et vous, avez-vous besoin d'aide ?</h2>
+      <p class="section-sub">En 4 questions anonymes, découvrez si une consultation pourrait améliorer votre qualité de
+        vie.</p>
+    </div>
+    <div class="diag-wrapper reveal">
+      <div class="diag-header">
+        <h3>🔍 Mon auto-diagnostic</h3>
+        <p>Anonyme · 2 minutes · Sans engagement</p>
+      </div>
+      <div class="diag-progress">
+        <div class="diag-dot active" id="dot-0"></div>
+        <div class="diag-dot" id="dot-1"></div>
+        <div class="diag-dot" id="dot-2"></div>
+        <div class="diag-dot" id="dot-3"></div>
+      </div>
+
+      <!-- Q1 -->
+      <div class="diag-question active" id="q0">
+        <p class="diag-q-text">1/4 — Avez-vous des fuites urinaires lors d'un effort (toux, éternuement, sport) ?</p>
+        <div class="diag-options">
+          <button class="diag-opt" onclick="selectOpt(this, 0, 2)">😣 Oui, régulièrement</button>
+          <button class="diag-opt" onclick="selectOpt(this, 0, 1)">😐 Parfois, mais je m'y suis habitué(e)</button>
+          <button class="diag-opt" onclick="selectOpt(this, 0, 0)">😊 Non, pas de problème</button>
+        </div>
+        <div class="diag-actions">
+          <span></span>
+          <button class="btn-next" onclick="nextQ(1)">Suivant →</button>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="diag-question" id="q1">
+        <p class="diag-q-text">2/4 — Ressentez-vous des douleurs ou un inconfort dans la région périnéale ?</p>
+        <div class="diag-options">
+          <button class="diag-opt" onclick="selectOpt(this, 1, 2)">😣 Oui, des douleurs présentes</button>
+          <button class="diag-opt" onclick="selectOpt(this, 1, 1)">😕 Un inconfort léger de temps en temps</button>
+          <button class="diag-opt" onclick="selectOpt(this, 1, 0)">😊 Non, aucun inconfort</button>
+        </div>
+        <div class="diag-actions">
+          <button class="btn-prev" onclick="nextQ(0)">← Retour</button>
+          <button class="btn-next" onclick="nextQ(2)">Suivant →</button>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="diag-question" id="q2">
+        <p class="diag-q-text">3/4 — Avez-vous accouché ou subi une intervention chirurgicale dans la région pelvienne ?
+        </p>
+        <div class="diag-options">
+          <button class="diag-opt" onclick="selectOpt(this, 2, 2)">✅ Oui, et je n'ai pas eu de rééducation</button>
+          <button class="diag-opt" onclick="selectOpt(this, 2, 1)">📋 Oui, et j'ai eu une prise en charge
+            partielle</button>
+          <button class="diag-opt" onclick="selectOpt(this, 2, 0)">❌ Non</button>
+        </div>
+        <div class="diag-actions">
+          <button class="btn-prev" onclick="nextQ(1)">← Retour</button>
+          <button class="btn-next" onclick="nextQ(3)">Suivant →</button>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="diag-question" id="q3">
+        <p class="diag-q-text">4/4 — Ces troubles affectent-ils votre qualité de vie au quotidien ?</p>
+        <div class="diag-options">
+          <button class="diag-opt" onclick="selectOpt(this, 3, 2)">😔 Oui, beaucoup — j'évite certaines
+            activités</button>
+          <button class="diag-opt" onclick="selectOpt(this, 3, 1)">😐 Un peu — j'y pense souvent</button>
+          <button class="diag-opt" onclick="selectOpt(this, 3, 0)">😊 Non, ça ne m'impacte pas vraiment</button>
+        </div>
+        <div class="diag-actions">
+          <button class="btn-prev" onclick="nextQ(2)">← Retour</button>
+          <button class="btn-next" onclick="showResult()">Voir mon résultat</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="diag-result" id="diag-result">
+        <span class="result-icon" id="result-icon">🌟</span>
+        <h3 class="result-title" id="result-title">Résultat</h3>
+        <p class="result-text" id="result-text">Texte résultat</p>
+        <a href="https://wa.me/2250757131853" class="btn-primary" target="_blank" id="result-cta"
+          style="display:inline-flex;margin:0 auto">
+          📱 Contacter le cabinet
+        </a>
+        <br><br>
+        <button onclick="resetDiag()" class="btn-prev" style="display:block;text-align:center;margin:0 auto">↩
+          Recommencer le diagnostic</button>
+      </div>
+
+      <p class="diag-note"><strong>🔒 Anonyme et confidentiel</strong> — Aucune donnée n'est collectée. Ce diagnostic ne
+        remplace pas une consultation médicale.</p>
+    </div>
+  </section>
+
+  <!-- ===== TEMOIGNAGES ===== -->
+  <section id="temoignages">
+    <div class="centered reveal">
+      <span class="section-tag">Témoignages</span>
+      <h2 class="section-title">Elles ont osé consulter.<br>Leur vie a changé.</h2>
+      <p class="section-sub">Des témoignages anonymisés de patientes qui ont repris confiance en leur corps.</p>
+    </div>
+    <div class="temoignages-grid">
+      <div class="temoignage-card reveal">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <blockquote>« Après mon deuxième accouchement, j'avais honte de mes fuites. Je n'en parlais à personne. Après 6
+          séances, j'ai retrouvé une vie normale. Je regrette de ne pas l'avoir fait plus tôt. »</blockquote>
+        <div class="temoignage-author">
+          <div class="author-avatar">🌸</div>
+          <div class="author-info">
+            <strong>A. K., 34 ans</strong>
+            <span>Post-partum · 2 accouchements</span>
+          </div>
+        </div>
+      </div>
+      <div class="temoignage-card reveal reveal-delay-1">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <blockquote>« Je faisais de la course à pied depuis 10 ans et je vivais avec des douleurs périnéales comme si
+          c'était normal. Le cabinet m'a montré que non, ce n'est pas normal. Aujourd'hui je cours sans contrainte. »
+        </blockquote>
+        <div class="temoignage-author">
+          <div class="author-avatar">🏃</div>
+          <div class="author-info">
+            <strong>C. B., 28 ans</strong>
+            <span>Sportive · Marathon</span>
+          </div>
+        </div>
+      </div>
+      <div class="temoignage-card reveal reveal-delay-2">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <blockquote>« À 58 ans, je pensais que ces inconforts faisaient partie de la vie. La rééducation périnéale m'a
+          prouvé le contraire. L'équipe est d'une discrétion et d'une bienveillance remarquables. »</blockquote>
+        <div class="temoignage-author">
+          <div class="author-avatar">🌿</div>
+          <div class="author-info">
+            <strong>M. D., 58 ans</strong>
+            <span>Ménopause · Abidjan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="centered reveal">
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title">Vos questions, nos réponses</h2>
+      <p class="section-sub">Nous répondons aux questions que vous n'osez peut-être pas encore poser.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          La rééducation périnéale, c'est vraiment pour moi ?
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">La rééducation périnéale concerne les femmes en post-partum, les sportives, les
+            femmes ménopausées et les hommes souffrant de troubles de la continence ou après une chirurgie prostatique.
+            Si vous ressentez des fuites, des douleurs ou un inconfort périnéal, une consultation s'impose. Votre
+            auto-diagnostic peut vous aider à évaluer la situation.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Est-ce que c'est douloureux ?
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Non. La rééducation périnéale est une pratique douce et respectueuse du corps.
+            Certaines techniques peuvent générer des sensations de travail musculaire, mais rien de douloureux. Votre
+            confort est notre priorité absolue à chaque séance.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Comment se déroule la première séance ?
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">La première consultation est un bilan complet et confidentiel. Nous prenons le temps
+            d'écouter votre histoire, de comprendre vos symptômes et vos objectifs. Une évaluation fonctionnelle est
+            réalisée. À la fin, un programme personnalisé vous est proposé avec le nombre de séances recommandées et la
+            fréquence.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Combien de temps dure un programme de rééducation ?
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Un programme standard comporte entre 6 et 12 séances selon votre situation. La durée
+            de chaque séance est d'environ 45 minutes à 1 heure. Des exercices à pratiquer à domicile complètent les
+            séances au cabinet pour des résultats optimaux.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Comment prendre rendez-vous ?
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">C'est très simple : envoyez-nous un message WhatsApp au +225 07 57 13 18 53. En
+            quelques secondes, votre demande est envoyée discrètement. Nous vous répondons dans les 2 heures pour
+            convenir d'un créneau qui vous convient. Vous pouvez aussi appeler directement.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Les hommes sont-ils acceptés au cabinet ?
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Absolument. Les hommes souffrant d'incontinence urinaire, de troubles
+            post-opératoires (prostate) ou de dysfonctions sexuelles liées au plancher pelvien peuvent bénéficier de
+            notre prise en charge. Nous accueillons tous nos patients avec la même bienveillance et le même
+            professionnalisme.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="centered reveal">
+      <span class="section-tag">Contact</span>
+      <h2 class="section-title">Prêt(e) à faire le premier pas ?</h2>
+      <p class="section-sub">La prise de contact la plus simple, c'est WhatsApp. Mais vous pouvez aussi nous écrire
+        directement.</p>
+    </div>
+    
+    <div class="contact-grid">
+
+      <!-- ===== INFO CONTACT ===== -->
+      <div class="contact-info reveal">
+        <h3>Parlons de votre situation</h3>
+        <p>Pas besoin de tout expliquer dès le premier message. Un simple "Je souhaite prendre rendez-vous" suffit. Nous
+          vous guidons ensuite avec bienveillance.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <span class="contact-ico">📱</span>
+            <div>
+              <strong>+225 07 17 44 44 44</strong>
+              <div style="font-size:.8rem;color:#6b7ab5">Appel & WhatsApp disponibles</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-ico">📱</span>
+            <div>
+              <strong>+225 01 61 90 09 99</strong>
+              <div style="font-size:.8rem;color:#6b7ab5">Appel & WhatsApp disponibles</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-ico">📧</span>
+            <div>
+              <strong>assoukpachristian@gmail.com</strong>
+              <div style="font-size:.8rem;color:#6b7ab5">Réponse sous 24h</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-ico">📍</span>
+            <div>
+              <strong>Abidjan, Côte d'Ivoire</strong>
+              <div style="font-size:.8rem;color:#6b7ab5">Précisez votre zone pour les directions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- ===== FORM CONTACT ===== -->
+      <div class="contact-form reveal reveal-delay-1">
+        <h3>Demande de rendez-vous</h3>
+        
+        <div style="background-color: #F8F7FF; padding: 1.5rem; border-radius: 1.2rem; border: 1px solid #eef1ff;">
+          <div class="form-group">
+            <label>Motif de consultation *</label>
+            <select id="contact-motif">
+              <option value="">Choisir un motif...</option>
+              <option value="Post-partum / Accouchement">Post-partum / Accouchement</option>
+              <option value="Fuites urinaires">Fuites urinaires</option>
+              <option value="Douleurs périnéales">Douleurs périnéales</option>
+              <option value="Sportive / Prévention">Sportive / Prévention</option>
+              <option value="Ménopause">Ménopause</option>
+              <option value="Autre / Je ne sais pas encore">Autre / Je ne sais pas encore</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message (optionnel)</label>
+            <textarea id="contact-message" placeholder="Décrivez brièvement votre situation si vous le souhaitez..."></textarea>
+          </div>
+          <button class="btn-submit" onclick="sendContactWhatsApp()" style="background: linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px; vertical-align: middle;">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Écrire sur WhatsApp
+          </button>
+          <p style="font-size:.78rem;color:#9aa4cc;text-align:center;margin-top:.8rem">🔒 Vos informations restent strictement confidentielles</p>
+        </div>
+
+      </div>
+
+      <!-- ===== GOOGLE MAP ===== -->
+      <div class="map-section reveal" style="padding-bottom: 0;">
+        <h3>Où nous trouver ?</h3>
+
+        <div class="map-wrapper" style="position: relative; width: 100%; height: 410px; border-radius: 1.5rem; overflow: hidden; box-shadow: var(--shadow); border: 4px solid white;">
+          <iframe 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=5.342972,-4.061&t=&z=15&ie=UTF8&iwloc=&output=embed">
+          </iframe>
+          
+          <div class="map-action" style="position: absolute; bottom: 15px; right: 15px; z-index: 10;">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=5.342972,-4.061" target="_blank" class="btn-primary" style="box-shadow: 0 10px 20px rgba(0,176,80,0.3); padding: 0.7rem 1.2rem; font-size: 0.85rem; text-decoration: none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:5px; vertical-align: middle;">
+                <path d="M21.71 11.29l-9-9a1 1 0 00-1.42 0l-9 9a1 1 0 000 1.42l9 9a1 1 0 001.42 0l9-9a1 1 0 000-1.42zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/>
+              </svg>
+              Itinéraire
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-top reveal">
+      <div class="footer-brand">
+        <img src="images/logo_BR.png" alt="Cabinet Périnéo" class="footer-logo">
+        <h3 class="footer-tagline">Harmonie intérieure, bien-être assuré</h3>
+        <p class="footer-desc">Spécialiste de la rééducation périnéo-sphinctérienne et de sexologie à Abidjan. Un espace de soin confidentiel, professionnel et bienveillant.</p>
+      </div>
+      
+      <div class="footer-col reveal reveal-delay-1">
+        <h4>Navigation Rapide</h4>
+        <ul class="footer-links">
+          <li><a href="#accueil"><span class="link-arrow">→</span> Accueil</a></li>
+          <li><a href="#soins"><span class="link-arrow">→</span> Nos Soins</a></li>
+          <li><a href="#approche"><span class="link-arrow">→</span> Notre Approche</a></li>
+          <li><a href="#temoignages"><span class="link-arrow">→</span> Témoignages</a></li>
+          <li><a href="#diagnostic"><span class="link-arrow">→</span> Auto-Diagnostic</a></li>
+          <li><a href="#contact"><span class="link-arrow">→</span> Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom reveal reveal-delay-2">
+      <div class="footer-copyright">
+        <p>© 2025 <strong>Cabinet Périnéo</strong> · Rééducation Périnéo-Sphinctérienne & Sexologie · Abidjan</p>
+      </div>
+      <div class="footer-credits">
+        <p>Conçu avec ❤️ par <a href="tel:+2250757131853">Côte d'Ivoire Innovation</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOAT ===== -->
+  <!-- <a href="https://wa.me/2250757131853?text=Bonjour%20Cabinet%20P%C3%A9rin%C3%A9o%2C%20je%20souhaite%20prendre%20rendez-vous."
+    class="wa-float" target="_blank" aria-label="WhatsApp">
+    <span class="wa-label">Prendre RDV</span>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a> -->
+
+  <script>
+
+
+    // ===== NAV SCROLL =====
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ===== MOBILE MENU =====
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    // ===== WHATSAPP FORM SENDER =====
+    function sendContactWhatsApp() {
+      const motif = document.getElementById('contact-motif').value;
+      const message = document.getElementById('contact-message').value;
+      const phone = "2250717444444";
+      
+      if (!motif) {
+        alert("Veuillez choisir un motif de consultation.");
+        return;
+      }
+      
+      // WhatsApp styling: *text* for bold
+      const formattedMessage = `*Motif : ${motif}*\n\n${message}`;
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(formattedMessage)}`;
+      
+      window.open(url, '_blank');
+    }
+
+    // ===== SCROLL REVEAL =====
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ===== FAQ =====
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ===== AUTO-DIAGNOSTIC =====
+    let scores = [0, 0, 0, 0];
+    let currentQ = 0;
+
+    function selectOpt(btn, qIdx, val) {
+      scores[qIdx] = val;
+      btn.closest('.diag-options').querySelectorAll('.diag-opt').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    }
+
+    function nextQ(idx) {
+      document.querySelectorAll('.diag-question').forEach(q => q.classList.remove('active'));
+      const dots = document.querySelectorAll('.diag-dot');
+      dots.forEach((d, i) => {
+        d.classList.remove('active', 'done');
+        if (i < idx) d.classList.add('done');
+        if (i === idx) d.classList.add('active');
+      });
+      const target = document.getElementById('q' + idx);
+      if (target) target.classList.add('active');
+      currentQ = idx;
+    }
+
+    function showResult() {
+      const total = scores.reduce((a, b) => a + b, 0);
+      const result = document.getElementById('diag-result');
+      const icon = document.getElementById('result-icon');
+      const title = document.getElementById('result-title');
+      const text = document.getElementById('result-text');
+      const cta = document.getElementById('result-cta');
+
+      document.querySelectorAll('.diag-question').forEach(q => q.classList.remove('active'));
+      document.querySelectorAll('.diag-dot').forEach(d => { d.classList.remove('active'); d.classList.add('done') });
+
+      if (total >= 5) {
+        icon.textContent = '🚨';
+        title.textContent = 'Une consultation s\'impose';
+        text.textContent = 'Vos réponses indiquent des troubles périnéaux qui impactent significativement votre qualité de vie. Une prise en charge professionnelle peut faire une vraie différence. N\'attendez pas — contactez-nous dès aujourd\'hui.';
+        cta.href = 'https://wa.me/2250757131853?text=Bonjour%2C%20mon%20auto-diagnostic%20indique%20que%20j%27ai%20besoin%20d%27une%20consultation%20urgent.';
+        cta.innerHTML = '📱 Prendre RDV d\'urgence sur WhatsApp';
+      } else if (total >= 2) {
+        icon.textContent = '⚠️';
+        title.textContent = 'Une consultation est conseillée';
+        text.textContent = 'Votre situation mérite une attention professionnelle. Des signes discrets peuvent cacher des troubles traçables efficacement. Une séance de bilan vous aidera à y voir plus clair et à prévenir l\'aggravation.';
+        cta.href = 'https://wa.me/2250757131853?text=Bonjour%2C%20j%27aimerais%20un%20bilan%20p%C3%A9rin%C3%A9al.';
+        cta.innerHTML = '📱 Prendre un RDV bilan';
+      } else {
+        icon.textContent = '💚';
+        title.textContent = 'Bonne nouvelle pour vous !';
+        text.textContent = 'Vos réponses semblent indiquer une situation stable. Cependant, la prévention reste essentielle — surtout après un accouchement ou dans une pratique sportive intense. N\'hésitez pas à nous consulter pour un bilan préventif.';
+        cta.href = 'https://wa.me/2250757131853?text=Bonjour%2C%20je%20souhaite%20un%20bilan%20pr%C3%A9ventif.';
+        cta.innerHTML = '📱 Bilan préventif';
+      }
+
+      result.classList.add('show');
+    }
+
+    function resetDiag() {
+      scores = [0, 0, 0, 0];
+      document.getElementById('diag-result').classList.remove('show');
+      document.querySelectorAll('.diag-opt').forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll('.diag-dot').forEach((d, i) => {
+        d.classList.remove('done', 'active');
+        if (i === 0) d.classList.add('active');
+      });
+      document.getElementById('q0').classList.add('active');
+    }
+
+    // Initialisation immédiate
+    document.body.style.overflow = 'auto';
+  </script>
+</body>
+
+</html>
