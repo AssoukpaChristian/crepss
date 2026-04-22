@@ -1466,7 +1466,7 @@
       background: var(--navy);
       background-image: radial-gradient(circle at top right, rgba(142, 161, 225, 0.1), transparent 500px);
       color: rgba(255, 255, 255, 0.7);
-      padding: 5rem 5% 2rem;
+      padding: 20px 5% 2rem;
       position: relative;
     }
 
@@ -1479,6 +1479,22 @@
       padding-bottom: 3rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       width: 100%;
+    }
+
+    .footer-logo-box {
+      background-color: white;
+      padding: 3rem 0;
+      text-align: center;
+      border-radius: 0;
+      /* margin: 0 -5.3% 3rem; */
+      /* box-shadow: 0 5px 25px rgba(0,0,0,0.03); */
+    }
+
+    .footer-logo-main {
+      height: 140px;
+      width: auto;
+      filter: none !important;
+      margin-bottom: 0;
     }
 
     .footer-brand .footer-logo {
@@ -2438,7 +2454,7 @@
           <div class="contact-item">
             <span class="contact-ico">📧</span>
             <div>
-              <strong>assoukpachristian@gmail.com</strong>
+              <strong>[EMAIL_ADDRESS]</strong>
               <div style="font-size:.8rem;color:#6b7ab5">Réponse sous 24h</div>
             </div>
           </div>
@@ -2518,10 +2534,13 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer>
+  <div class="footer-logo-box">
+    <img src="images/logo_BR.png" alt="Cabinet Périnéo" class="footer-logo-main">
+  </div>
+
+  <footer>  
     <div class="footer-top reveal">
       <div class="footer-brand">
-        <img src="images/logo_BR.png" alt="Cabinet Périnéo" class="footer-logo">
         <h3 class="footer-tagline">Harmonie intérieure, bien-être assuré</h3>
         <p class="footer-desc">Spécialiste de la rééducation périnéo-sphinctérienne et de sexologie à Abidjan. Un espace
           de soin confidentiel, professionnel et bienveillant.</p>
@@ -2542,7 +2561,7 @@
 
     <div class="footer-bottom reveal reveal-delay-2">
       <div class="footer-copyright">
-        <p>© 2025 <strong>Cabinet Périnéo</strong> · Rééducation Périnéo-Sphinctérienne & Sexologie · Abidjan</p>
+        <p>© <span id="current-year"></span> <strong>CREPSS</strong> Cabinet de Rééducation Périnéo-Sphinctérienne & Sexologie · Abidjan</p>
       </div>
       <div class="footer-credits">
         <p>Conçu avec ❤️ par <a href="tel:+2250757131853">Côte d'Ivoire Innovation</a></p>
@@ -2682,6 +2701,7 @@
 
     // Initialisation immédiate
     document.body.style.overflow = 'auto';
+    document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 </body>
 
