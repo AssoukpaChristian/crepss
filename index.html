@@ -1721,6 +1721,38 @@
       transition-delay: .45s
     }
 
+    /* ===================== BACK TO TOP ===================== */
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: #B384C9;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(179, 132, 201, 0.4);
+    }
+
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #back-to-top:hover {
+      background-color: #a272b8;
+      transform: translateY(-5px);
+    }
+
     /* ===================== RESPONSIVE ===================== */
     @media(max-width:900px) {
       .nav-logo img {
@@ -1741,7 +1773,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 90vw;
+        height: 95vw;
         /* Increased height */
         object-fit: cover;
         object-position: center 100px;
@@ -2584,6 +2616,13 @@
     </div>
   </footer>
 
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="back-to-top" title="Retour en haut">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
   <!-- ===== WHATSAPP FLOAT ===== -->
   <!-- <a href="https://wa.me/2250757131853?text=Bonjour%20Cabinet%20P%C3%A9rin%C3%A9o%2C%20je%20souhaite%20prendre%20rendez-vous."
     class="wa-float" target="_blank" aria-label="WhatsApp">
@@ -2717,6 +2756,20 @@
     // Initialisation immédiate
     document.body.style.overflow = 'auto';
     document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Back to top
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 
